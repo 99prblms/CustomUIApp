@@ -15,13 +15,6 @@ class CustomButton: UIButton {
         setupButton()
     }
     
-//    // Добавляю кнопке тактильную отдачу
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//        
-//
-//    }
-//    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
