@@ -15,6 +15,13 @@ class CustomButton: UIButton {
         setupButton()
     }
     
+//    // Добавляю кнопке тактильную отдачу
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesBegan(touches, with: event)
+//        
+//
+//    }
+//    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -23,7 +30,6 @@ class CustomButton: UIButton {
         setShadow()
         
         setTitleColor(.white, for: .normal)
-        setTitle("ShackButton", for: .normal)
         backgroundColor = .systemBlue
         titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 18)
         layer.cornerRadius = 25
@@ -40,6 +46,7 @@ class CustomButton: UIButton {
         layer.masksToBounds = false
     }
     
+    // Тряска кнопки + вибрация
     func shakeButton() {
         let shake = CABasicAnimation(keyPath: "position")
         shake.duration = 0.1
@@ -60,7 +67,29 @@ class CustomButton: UIButton {
         layer.add(shake, forKey: "position")
     }
     
+    // Переворот кнопки
     func flipButton() {
+        UIView.animate(withDuration: 0.3, delay: .zero, options: .curveLinear) {
+            self.transform = CGAffineTransform(rotationAngle: .pi)
+        } completion: { _ in
+            UIView.animate(withDuration: 0.3) {
+                self.transform = .identity
+            }
+        }
+    }
+    
+    // Анимация прожимания кнопки + тактильная отдача
+    func pushButton() {
+        UIView.animate(withDuration: 0.1, delay: .zero, options: .curveLinear) {
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        } completion: { _ in
+            UIView.animate(withDuration: 0.1) {
+                self.transform = .identity
+            }
+        }
         
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
+        feedbackGenerator.prepare()
+        feedbackGenerator.impactOccurred()
     }
 }
