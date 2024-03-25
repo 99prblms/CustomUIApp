@@ -20,14 +20,13 @@ class CustomButton: UIButton {
     }
     
     private func setupButton() {
-        setShadow()
-        
-        setTitleColor(.white, for: .normal)
-        backgroundColor = .systemBlue
+//        setShadow()
+        setTitleColor(.black, for: .normal)
+        backgroundColor = .systemGreen
         titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 18)
-        layer.cornerRadius = 25
-        layer.borderWidth = 3.0
-        layer.borderColor = UIColor.darkGray.cgColor
+        layer.cornerRadius = 20
+//        layer.borderWidth = 1.0
+//        layer.borderColor = UIColor.darkGray.cgColor
     }
     
     private func setShadow() {
