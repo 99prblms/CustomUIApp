@@ -63,6 +63,18 @@ class CustomView: UIView {
         return myImageView
     }()
     
+    var cloudImageView: UIImageView = {
+        var myImageView = UIImageView()
+        myImageView.image = UIImage(named: "cloud")
+        return myImageView
+    }()
+    
+    var starImageView: UIImageView = {
+        var myImageView = UIImageView()
+        myImageView.image = UIImage(named: "stars")
+        return myImageView
+    }()
+    
     func setupMoonImageView() {
         moonImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -80,7 +92,25 @@ class CustomView: UIView {
         sunImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -400).isActive = true
         sunImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -500).isActive = true
     }
-
+    
+    func setupCloudImageView() {
+        cloudImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        cloudImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: -300).isActive = true
+        cloudImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: -125).isActive = true
+        cloudImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25).isActive = true
+        cloudImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -900).isActive = true
+    }
+    
+    func setupStarImageView() {
+        starImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        starImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        starImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 125).isActive = true
+        starImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25).isActive = true
+        starImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -500).isActive = true
+    }
+    
     init() {
         super.init(frame: .zero)
         backgroundColor = .black
@@ -88,10 +118,12 @@ class CustomView: UIView {
         setupButtonsStackView()
         setupMoonImageView()
         setupSunImageView()
+        setupCloudImageView()
+        setupStarImageView()
     }
     
     func addSubviews() {
-        [buttonsStackView, moonImageView, sunImageView].forEach { addSubview($0) }
+        [buttonsStackView, moonImageView, sunImageView, cloudImageView, starImageView].forEach { addSubview($0) }
     }
     
     required init?(coder: NSCoder) {
@@ -101,11 +133,13 @@ class CustomView: UIView {
     @objc func tapShakeButton() {
         shakeButton.shakeButton()
         self.backgroundColor = .blue
-        // Исчезновение луны
         
+        // Появление солнца
         let animation = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
             self.moonImageView.frame = self.moonImageView.frame.offsetBy(dx: 400, dy: 0)
             self.sunImageView.frame = self.sunImageView.frame.offsetBy(dx: 325, dy: 0)
+            self.starImageView.frame = self.starImageView.frame.offsetBy(dx: 0, dy: -300)
+            self.cloudImageView.frame = self.cloudImageView.frame.offsetBy(dx: 0, dy: 300)
         }
         animation.startAnimation()
         
@@ -114,9 +148,13 @@ class CustomView: UIView {
     @objc func tapFlipButton() {
         flipButton.flipButton()
         self.backgroundColor = .black
+        
+        // Появление луны
         let animation = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
             self.moonImageView.frame = self.moonImageView.frame.offsetBy(dx: -400, dy: 0)
             self.sunImageView.frame = self.sunImageView.frame.offsetBy(dx: -325, dy: 0)
+            self.starImageView.frame = self.starImageView.frame.offsetBy(dx: 0, dy: 300)
+            self.cloudImageView.frame = self.cloudImageView.frame.offsetBy(dx: 0, dy: -300)
         }
         animation.startAnimation()
         
