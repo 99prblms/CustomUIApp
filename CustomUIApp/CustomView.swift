@@ -70,50 +70,58 @@ class CustomView: UIView {
     }()
     
     var starImageView: UIImageView = {
-        var myImageView = UIImageView()
-        myImageView.image = UIImage(named: "stars")
-        return myImageView
+        var starImageView = UIImageView()
+        starImageView.image = UIImage(named: "star")
+        return starImageView
     }()
     
     func setupMoonImageView() {
         moonImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        moonImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        moonImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 75).isActive = true
-        moonImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -75).isActive = true
-        moonImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -500).isActive = true
+        moonImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        moonImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 25).isActive = true
+        moonImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25).isActive = true
+        moonImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -450).isActive = true
+        
+        moonImageView.contentMode = .scaleAspectFit
     }
     
     func setupSunImageView() {
         sunImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        sunImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        sunImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: -250).isActive = true
-        sunImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -400).isActive = true
-        sunImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -500).isActive = true
+        sunImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: -380).isActive = true
+        sunImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 80).isActive = true
+        sunImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -80).isActive = true
+        sunImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -920).isActive = true
+        
+        sunImageView.contentMode = .scaleAspectFit
     }
     
     func setupCloudImageView() {
         cloudImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        cloudImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: -300).isActive = true
-        cloudImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: -125).isActive = true
-        cloudImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25).isActive = true
-        cloudImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -900).isActive = true
+        cloudImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
+        cloudImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: -250).isActive = true
+        cloudImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -400).isActive = true
+        cloudImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -450).isActive = true
+        
+        cloudImageView.contentMode = .scaleAspectFit
     }
     
     func setupStarImageView() {
         starImageView.translatesAutoresizingMaskIntoConstraints = false
+
+        starImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        starImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 145).isActive = true
+        starImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -5).isActive = true
+        starImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -540).isActive = true
         
-        starImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
-        starImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 125).isActive = true
-        starImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25).isActive = true
-        starImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -500).isActive = true
+        starImageView.contentMode = .scaleAspectFit
     }
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = .black
+        backgroundColor = .night
         addSubviews()
         setupButtonsStackView()
         setupMoonImageView()
@@ -132,32 +140,45 @@ class CustomView: UIView {
     
     @objc func tapShakeButton() {
         shakeButton.shakeButton()
-        self.backgroundColor = .blue
         
         // Появление солнца
         let animation = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
-            self.moonImageView.frame = self.moonImageView.frame.offsetBy(dx: 400, dy: 0)
-            self.sunImageView.frame = self.sunImageView.frame.offsetBy(dx: 325, dy: 0)
-            self.starImageView.frame = self.starImageView.frame.offsetBy(dx: 0, dy: -300)
-            self.cloudImageView.frame = self.cloudImageView.frame.offsetBy(dx: 0, dy: 300)
+
+            self.starImageView.frame.origin = CGPoint(x: -300, y: 35)
+            self.cloudImageView.frame.origin = CGPoint(x: 145, y: 150)
+            self.moonImageView.frame.origin = CGPoint(x: 35, y: -300)
+            self.sunImageView.frame.origin = CGPoint(x: 80, y: 95)
         }
         animation.startAnimation()
         
+        let color = UIColor.day
+        UIView.transition(
+            with: self,
+            duration: 0.5,
+            options: .showHideTransitionViews) {
+                self.backgroundColor = color
+            }
     }
     
     @objc func tapFlipButton() {
         flipButton.flipButton()
-        self.backgroundColor = .black
         
         // Появление луны
         let animation = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
-            self.moonImageView.frame = self.moonImageView.frame.offsetBy(dx: -400, dy: 0)
-            self.sunImageView.frame = self.sunImageView.frame.offsetBy(dx: -325, dy: 0)
-            self.starImageView.frame = self.starImageView.frame.offsetBy(dx: 0, dy: 300)
-            self.cloudImageView.frame = self.cloudImageView.frame.offsetBy(dx: 0, dy: -300)
+            self.starImageView.frame.origin = CGPoint(x: 145, y: 66.5)
+            self.cloudImageView.frame.origin = CGPoint(x: -300, y: 35)
+            self.moonImageView.frame.origin = CGPoint(x: 26, y: 65.5)
+            self.sunImageView.frame.origin = CGPoint(x: 35, y: -300)
         }
         animation.startAnimation()
         
+        let color = UIColor.night
+        UIView.transition(
+            with: self,
+            duration: 0.5,
+            options: .showHideTransitionViews) {
+                self.backgroundColor = color
+            }
     }
     
     @objc func tapPushButton() {
