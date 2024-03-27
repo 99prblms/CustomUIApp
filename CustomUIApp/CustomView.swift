@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Lottie
 
 class CustomView: UIView {
+    
+    var flagOnOff = true
     
     var shakeButton: CustomButton = {
         let shake = CustomButton()
@@ -35,6 +38,17 @@ class CustomView: UIView {
         return buttonsStackView
     }()
     
+    var switchDayNight: AnimationView = {
+        let switchDayNight = AnimationView()
+        switchDayNight.animation = Animation.named("DNSwitchAnimation")
+        switchDayNight.loopMode = .playOnce
+        switchDayNight.animationSpeed = 2.5
+        switchDayNight.layer.cornerRadius = 46
+        switchDayNight.isUserInteractionEnabled = true
+        
+        return switchDayNight
+    }()
+    
     func setupButtonsStackView() {
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonsStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 500).isActive = true
@@ -49,6 +63,21 @@ class CustomView: UIView {
         shakeButton.addTarget(self, action: #selector(tapShakeButton), for: .touchUpInside)
         flipButton.addTarget(self, action: #selector(tapFlipButton), for: .touchUpInside)
         pushButton.addTarget(self, action: #selector(tapPushButton), for: .touchUpInside)
+        buttonsStackView.contentMode = .scaleAspectFit
+    }
+    
+    func switchDayNightSetup() {
+        
+        switchDayNight.translatesAutoresizingMaskIntoConstraints = false
+        switchDayNight.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 390).isActive = true
+        switchDayNight.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+        switchDayNight.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -300).isActive = true
+        switchDayNight.bottomAnchor.constraint(equalTo: buttonsStackView.safeAreaLayoutGuide.topAnchor, constant: -10).isActive = true
+        
+        let tapGestureDayNight = UITapGestureRecognizer(target: self, action: #selector(switchDayNightTapped))
+        switchDayNight.addGestureRecognizer(tapGestureDayNight)
+        
+        switchDayNight.contentMode = .scaleAspectFit
     }
     
     var moonImageView: UIImageView = {
@@ -77,45 +106,37 @@ class CustomView: UIView {
     
     func setupMoonImageView() {
         moonImageView.translatesAutoresizingMaskIntoConstraints = false
-        
         moonImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
         moonImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 25).isActive = true
         moonImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25).isActive = true
         moonImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -450).isActive = true
-        
         moonImageView.contentMode = .scaleAspectFit
     }
     
     func setupSunImageView() {
         sunImageView.translatesAutoresizingMaskIntoConstraints = false
-        
         sunImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: -380).isActive = true
         sunImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 80).isActive = true
         sunImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -80).isActive = true
         sunImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -920).isActive = true
-        
         sunImageView.contentMode = .scaleAspectFit
     }
     
     func setupCloudImageView() {
         cloudImageView.translatesAutoresizingMaskIntoConstraints = false
-        
         cloudImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
         cloudImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: -250).isActive = true
         cloudImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -400).isActive = true
         cloudImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -450).isActive = true
-        
         cloudImageView.contentMode = .scaleAspectFit
     }
     
     func setupStarImageView() {
         starImageView.translatesAutoresizingMaskIntoConstraints = false
-
         starImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         starImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 145).isActive = true
         starImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -5).isActive = true
         starImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -540).isActive = true
-        
         starImageView.contentMode = .scaleAspectFit
     }
     
@@ -128,10 +149,11 @@ class CustomView: UIView {
         setupSunImageView()
         setupCloudImageView()
         setupStarImageView()
+        switchDayNightSetup()
     }
     
     func addSubviews() {
-        [buttonsStackView, moonImageView, sunImageView, cloudImageView, starImageView].forEach { addSubview($0) }
+        [buttonsStackView, moonImageView, sunImageView, cloudImageView, starImageView, switchDayNight].forEach { addSubview($0) }
     }
     
     required init?(coder: NSCoder) {
@@ -141,44 +163,11 @@ class CustomView: UIView {
     @objc func tapShakeButton() {
         shakeButton.shakeButton()
         
-        // Появление солнца
-        let animation = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
-
-            self.starImageView.frame.origin = CGPoint(x: -300, y: 35)
-            self.cloudImageView.frame.origin = CGPoint(x: 145, y: 150)
-            self.moonImageView.frame.origin = CGPoint(x: 35, y: -300)
-            self.sunImageView.frame.origin = CGPoint(x: 80, y: 95)
-        }
-        animation.startAnimation()
-        
-        let color = UIColor.day
-        UIView.transition(
-            with: self,
-            duration: 0.5,
-            options: .showHideTransitionViews) {
-                self.backgroundColor = color
-            }
     }
     
     @objc func tapFlipButton() {
         flipButton.flipButton()
         
-        // Появление луны
-        let animation = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
-            self.starImageView.frame.origin = CGPoint(x: 145, y: 66.5)
-            self.cloudImageView.frame.origin = CGPoint(x: -300, y: 35)
-            self.moonImageView.frame.origin = CGPoint(x: 26, y: 65.5)
-            self.sunImageView.frame.origin = CGPoint(x: 35, y: -300)
-        }
-        animation.startAnimation()
-        
-        let color = UIColor.night
-        UIView.transition(
-            with: self,
-            duration: 0.5,
-            options: .showHideTransitionViews) {
-                self.backgroundColor = color
-            }
     }
     
     @objc func tapPushButton() {
@@ -186,5 +175,52 @@ class CustomView: UIView {
         
     }
     
-    
+    @objc func switchDayNightTapped() {
+        
+        if flagOnOff {
+            switchDayNight.play()
+            // Появление солнца
+            let animation = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
+                self.starImageView.frame.origin = CGPoint(x: -300, y: 35)
+                self.cloudImageView.frame.origin = CGPoint(x: 145, y: 150)
+                self.moonImageView.frame.origin = CGPoint(x: 35, y: -300)
+                self.sunImageView.frame.origin = CGPoint(x: 80, y: 95)
+            }
+            animation.startAnimation()
+            
+            let color = UIColor.day
+            UIView.transition(
+                with: self,
+                duration: 0.5,
+                options: .showHideTransitionViews) {
+                    self.backgroundColor = color
+                }
+            let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+            feedbackGenerator.prepare()
+            feedbackGenerator.impactOccurred()
+            
+        } else {
+            switchDayNight.play(fromProgress: 1, toProgress: 0, loopMode: .none, completion: nil)
+            // Появление луны
+            let animation = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
+                self.starImageView.frame.origin = CGPoint(x: 145, y: 66.5)
+                self.cloudImageView.frame.origin = CGPoint(x: -300, y: 35)
+                self.moonImageView.frame.origin = CGPoint(x: 26, y: 65.5)
+                self.sunImageView.frame.origin = CGPoint(x: 35, y: -300)
+            }
+            animation.startAnimation()
+            
+            let color = UIColor.night
+            UIView.transition(
+                with: self,
+                duration: 0.5,
+                options: .showHideTransitionViews) {
+                    self.backgroundColor = color
+                }
+            let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+            feedbackGenerator.prepare()
+            feedbackGenerator.impactOccurred()
+        }
+        flagOnOff.toggle()
+    }
 }

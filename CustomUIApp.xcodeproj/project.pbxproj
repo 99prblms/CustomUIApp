@@ -14,6 +14,8 @@
 		192F4A3D2BB023EA001E5A5F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 192F4A3C2BB023EA001E5A5F /* Base */; };
 		192F4A452BB02644001E5A5F /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192F4A442BB02644001E5A5F /* CustomView.swift */; };
 		192F4A472BB029DE001E5A5F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192F4A462BB029DE001E5A5F /* CustomButton.swift */; };
+		19FAA6212BB4847700FB63C0 /* DNSwitchAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FAA6202BB4847700FB63C0 /* DNSwitchAnimation.json */; };
+		DD600ADA460ADEC70121A2E7 /* Pods_CustomUIApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801C15582CB3F6B2707CFEDB /* Pods_CustomUIApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		192F4A3E2BB023EA001E5A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		192F4A442BB02644001E5A5F /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		192F4A462BB029DE001E5A5F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		19FAA6202BB4847700FB63C0 /* DNSwitchAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = DNSwitchAnimation.json; path = ../../../../Downloads/DNSwitchAnimation.json; sourceTree = "<group>"; };
+		6E273BF49FB9529BE198B991 /* Pods-CustomUIApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomUIApp.debug.xcconfig"; path = "Target Support Files/Pods-CustomUIApp/Pods-CustomUIApp.debug.xcconfig"; sourceTree = "<group>"; };
+		801C15582CB3F6B2707CFEDB /* Pods_CustomUIApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomUIApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B40912833C6115D6D7079CE5 /* Pods-CustomUIApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomUIApp.release.xcconfig"; path = "Target Support Files/Pods-CustomUIApp/Pods-CustomUIApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD600ADA460ADEC70121A2E7 /* Pods_CustomUIApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,8 +49,11 @@
 		192F4A242BB023E7001E5A5F = {
 			isa = PBXGroup;
 			children = (
+				19FAA61B2BB46E0700FB63C0 /* Animations */,
 				192F4A2F2BB023E7001E5A5F /* CustomUIApp */,
 				192F4A2E2BB023E7001E5A5F /* Products */,
+				6B14AD3BC074AB979A5B9AC4 /* Pods */,
+				A1C9EC5CC3034CFB12CF5C69 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +80,31 @@
 			path = CustomUIApp;
 			sourceTree = "<group>";
 		};
+		19FAA61B2BB46E0700FB63C0 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				19FAA6202BB4847700FB63C0 /* DNSwitchAnimation.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		6B14AD3BC074AB979A5B9AC4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E273BF49FB9529BE198B991 /* Pods-CustomUIApp.debug.xcconfig */,
+				B40912833C6115D6D7079CE5 /* Pods-CustomUIApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A1C9EC5CC3034CFB12CF5C69 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				801C15582CB3F6B2707CFEDB /* Pods_CustomUIApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 192F4A412BB023EA001E5A5F /* Build configuration list for PBXNativeTarget "CustomUIApp" */;
 			buildPhases = (
+				83D7755B7030751C4CD7921B /* [CP] Check Pods Manifest.lock */,
 				192F4A292BB023E7001E5A5F /* Sources */,
 				192F4A2A2BB023E7001E5A5F /* Frameworks */,
 				192F4A2B2BB023E7001E5A5F /* Resources */,
+				4055318C9BC41E1B0CEC17FC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,12 +165,55 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19FAA6212BB4847700FB63C0 /* DNSwitchAnimation.json in Resources */,
 				192F4A3A2BB023EA001E5A5F /* Assets.xcassets in Resources */,
 				192F4A3D2BB023EA001E5A5F /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4055318C9BC41E1B0CEC17FC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CustomUIApp/Pods-CustomUIApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CustomUIApp/Pods-CustomUIApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CustomUIApp/Pods-CustomUIApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83D7755B7030751C4CD7921B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CustomUIApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		192F4A292BB023E7001E5A5F /* Sources */ = {
@@ -199,7 +279,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -262,7 +342,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -283,6 +363,7 @@
 		};
 		192F4A422BB023EA001E5A5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E273BF49FB9529BE198B991 /* Pods-CustomUIApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -311,6 +392,7 @@
 		};
 		192F4A432BB023EA001E5A5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B40912833C6115D6D7079CE5 /* Pods-CustomUIApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
