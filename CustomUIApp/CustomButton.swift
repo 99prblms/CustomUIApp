@@ -24,7 +24,7 @@ class CustomButton: UIButton {
         setTitleColor(.black, for: .normal)
         backgroundColor = .systemGreen
         titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 18)
-        layer.cornerRadius = 35
+        layer.cornerRadius = 15
         layer.borderWidth = 5.0
         layer.borderColor = UIColor.black.cgColor
     }
@@ -47,7 +47,7 @@ class CustomButton: UIButton {
         
         let fromPoint = CGPoint(x: center.x - 8, y: center.y)
         let fromValue = NSValue(cgPoint: fromPoint)
-        
+
         let toPoint = CGPoint(x: center.x + 8, y: center.y)
         let toValue = NSValue(cgPoint: toPoint)
         
@@ -79,7 +79,6 @@ class CustomButton: UIButton {
                 self.transform = .identity
             }
         }
-        
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
         feedbackGenerator.prepare()
         feedbackGenerator.impactOccurred()
