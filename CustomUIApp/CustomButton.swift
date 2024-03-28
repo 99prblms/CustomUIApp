@@ -19,23 +19,15 @@ class CustomButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupButton() {
-//        setShadow()
+    // MARK: - Methods
+    
+    func setupButton() {
         setTitleColor(.black, for: .normal)
         backgroundColor = .systemGreen
         titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 18)
         layer.cornerRadius = 15
         layer.borderWidth = 5.0
         layer.borderColor = UIColor.black.cgColor
-    }
-    
-    private func setShadow() {
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-        layer.shadowRadius = 8
-        layer.shadowOpacity = 0.5
-        clipsToBounds = true
-        layer.masksToBounds = false
     }
     
     // Тряска кнопки + вибрация
@@ -47,18 +39,14 @@ class CustomButton: UIButton {
         
         let fromPoint = CGPoint(x: center.x - 8, y: center.y)
         let fromValue = NSValue(cgPoint: fromPoint)
-
         let toPoint = CGPoint(x: center.x + 8, y: center.y)
         let toValue = NSValue(cgPoint: toPoint)
         
         shake.fromValue = fromValue
         shake.toValue = toValue
-        
         AudioServicesPlaySystemSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {}
-        
         layer.add(shake, forKey: "position")
     }
-    
     // Переворот кнопки
     func flipButton() {
         UIView.animate(withDuration: 0.3, delay: .zero, options: .curveLinear) {
@@ -69,7 +57,6 @@ class CustomButton: UIButton {
             }
         }
     }
-    
     // Анимация прожимания кнопки + тактильная отдача
     func pushButton() {
         UIView.animate(withDuration: 0.1, delay: .zero, options: .curveLinear) {

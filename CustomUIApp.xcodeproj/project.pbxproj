@@ -14,7 +14,7 @@
 		192F4A3D2BB023EA001E5A5F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 192F4A3C2BB023EA001E5A5F /* Base */; };
 		192F4A452BB02644001E5A5F /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192F4A442BB02644001E5A5F /* CustomView.swift */; };
 		192F4A472BB029DE001E5A5F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192F4A462BB029DE001E5A5F /* CustomButton.swift */; };
-		19FAA6212BB4847700FB63C0 /* DNSwitchAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 19FAA6202BB4847700FB63C0 /* DNSwitchAnimation.json */; };
+		19E55C5E2BB5CA610039FEDF /* Animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 19E55C5D2BB5CA610039FEDF /* Animation.json */; };
 		DD600ADA460ADEC70121A2E7 /* Pods_CustomUIApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801C15582CB3F6B2707CFEDB /* Pods_CustomUIApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +28,7 @@
 		192F4A3E2BB023EA001E5A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		192F4A442BB02644001E5A5F /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		192F4A462BB029DE001E5A5F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		19FAA6202BB4847700FB63C0 /* DNSwitchAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = DNSwitchAnimation.json; path = ../../../../Downloads/DNSwitchAnimation.json; sourceTree = "<group>"; };
+		19E55C5D2BB5CA610039FEDF /* Animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Animation.json; path = ../../../../Downloads/Animation.json; sourceTree = "<group>"; };
 		6E273BF49FB9529BE198B991 /* Pods-CustomUIApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomUIApp.debug.xcconfig"; path = "Target Support Files/Pods-CustomUIApp/Pods-CustomUIApp.debug.xcconfig"; sourceTree = "<group>"; };
 		801C15582CB3F6B2707CFEDB /* Pods_CustomUIApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomUIApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40912833C6115D6D7079CE5 /* Pods-CustomUIApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomUIApp.release.xcconfig"; path = "Target Support Files/Pods-CustomUIApp/Pods-CustomUIApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		19FAA61B2BB46E0700FB63C0 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				19FAA6202BB4847700FB63C0 /* DNSwitchAnimation.json */,
+				19E55C5D2BB5CA610039FEDF /* Animation.json */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -165,9 +165,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19FAA6212BB4847700FB63C0 /* DNSwitchAnimation.json in Resources */,
 				192F4A3A2BB023EA001E5A5F /* Assets.xcassets in Resources */,
 				192F4A3D2BB023EA001E5A5F /* Base in Resources */,
+				19E55C5E2BB5CA610039FEDF /* Animation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

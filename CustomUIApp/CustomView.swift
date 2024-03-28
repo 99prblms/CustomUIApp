@@ -12,25 +12,25 @@ class CustomView: UIView {
     
     var flagOnOff = true
     
-    var shakeButton: CustomButton = {
+    private var shakeButton: CustomButton = {
         let shake = CustomButton()
         shake.setTitle("Shake button", for: .normal)
         return shake
     }()
     
-    var flipButton: CustomButton = {
+   private var flipButton: CustomButton = {
         let flip = CustomButton()
         flip.setTitle("Flip button", for: .normal)
         return flip
     }()
     
-    var pushButton: CustomButton = {
+    private var pushButton: CustomButton = {
         let push = CustomButton()
         push.setTitle("Push button", for: .normal)
         return push
     }()
     
-    var buttonsStackView: UIStackView = {
+    private var buttonsStackView: UIStackView = {
         let buttonsStackView = UIStackView()
         buttonsStackView.axis = .vertical
         buttonsStackView.spacing = 10
@@ -38,47 +38,17 @@ class CustomView: UIView {
         return buttonsStackView
     }()
     
-    var switchDayNight: AnimationView = {
+    private var switchDayNight: AnimationView = {
         let switchDayNight = AnimationView()
-        switchDayNight.animation = Animation.named("DNSwitchAnimation")
+        switchDayNight.animation = Animation.named("Animation")
         switchDayNight.loopMode = .playOnce
-        switchDayNight.animationSpeed = 2.5
-        switchDayNight.layer.cornerRadius = 46
+        switchDayNight.layer.borderWidth = 5
+        switchDayNight.backgroundColor = .systemFill
+        switchDayNight.layer.cornerRadius = 25
         switchDayNight.isUserInteractionEnabled = true
         
         return switchDayNight
     }()
-    
-    func setupButtonsStackView() {
-        buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 500).isActive = true
-        buttonsStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        buttonsStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
-        buttonsStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
-        
-        buttonsStackView.addArrangedSubview(shakeButton)
-        buttonsStackView.addArrangedSubview(flipButton)
-        buttonsStackView.addArrangedSubview(pushButton)
-        
-        shakeButton.addTarget(self, action: #selector(tapShakeButton), for: .touchUpInside)
-        flipButton.addTarget(self, action: #selector(tapFlipButton), for: .touchUpInside)
-        pushButton.addTarget(self, action: #selector(tapPushButton), for: .touchUpInside)
-        buttonsStackView.contentMode = .scaleAspectFit
-    }
-    
-    func switchDayNightSetup() {
-        
-        switchDayNight.translatesAutoresizingMaskIntoConstraints = false
-        switchDayNight.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 390).isActive = true
-        switchDayNight.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
-        switchDayNight.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -300).isActive = true
-        switchDayNight.bottomAnchor.constraint(equalTo: buttonsStackView.safeAreaLayoutGuide.topAnchor, constant: -10).isActive = true
-        
-        let tapGestureDayNight = UITapGestureRecognizer(target: self, action: #selector(switchDayNightTapped))
-        switchDayNight.addGestureRecognizer(tapGestureDayNight)
-        
-        switchDayNight.contentMode = .scaleAspectFit
-    }
     
     var moonImageView: UIImageView = {
         var myImageView = UIImageView()
@@ -104,41 +74,7 @@ class CustomView: UIView {
         return starImageView
     }()
     
-    func setupMoonImageView() {
-        moonImageView.translatesAutoresizingMaskIntoConstraints = false
-        moonImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
-        moonImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 25).isActive = true
-        moonImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25).isActive = true
-        moonImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -450).isActive = true
-        moonImageView.contentMode = .scaleAspectFit
-    }
-    
-    func setupSunImageView() {
-        sunImageView.translatesAutoresizingMaskIntoConstraints = false
-        sunImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: -380).isActive = true
-        sunImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 80).isActive = true
-        sunImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -80).isActive = true
-        sunImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -920).isActive = true
-        sunImageView.contentMode = .scaleAspectFit
-    }
-    
-    func setupCloudImageView() {
-        cloudImageView.translatesAutoresizingMaskIntoConstraints = false
-        cloudImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
-        cloudImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: -250).isActive = true
-        cloudImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -400).isActive = true
-        cloudImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -450).isActive = true
-        cloudImageView.contentMode = .scaleAspectFit
-    }
-    
-    func setupStarImageView() {
-        starImageView.translatesAutoresizingMaskIntoConstraints = false
-        starImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        starImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 145).isActive = true
-        starImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -5).isActive = true
-        starImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -540).isActive = true
-        starImageView.contentMode = .scaleAspectFit
-    }
+    // MARK: - Initializers
     
     init() {
         super.init(frame: .zero)
@@ -160,23 +96,21 @@ class CustomView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Actions
+    
     @objc func tapShakeButton() {
         shakeButton.shakeButton()
-        
     }
     
     @objc func tapFlipButton() {
         flipButton.flipButton()
-        
     }
     
     @objc func tapPushButton() {
         pushButton.pushButton()
-        
     }
     
     @objc func switchDayNightTapped() {
-        
         if flagOnOff {
             switchDayNight.play()
             // Появление солнца
@@ -223,4 +157,74 @@ class CustomView: UIView {
         }
         flagOnOff.toggle()
     }
+    
+    // MARK: - Private Methods
+    
+    private func setupMoonImageView() {
+        moonImageView.translatesAutoresizingMaskIntoConstraints = false
+        moonImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        moonImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 25).isActive = true
+        moonImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -25).isActive = true
+        moonImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -450).isActive = true
+        moonImageView.contentMode = .scaleAspectFit
+    }
+    
+    private func setupSunImageView() {
+        sunImageView.translatesAutoresizingMaskIntoConstraints = false
+        sunImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: -380).isActive = true
+        sunImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 80).isActive = true
+        sunImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -80).isActive = true
+        sunImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -920).isActive = true
+        sunImageView.contentMode = .scaleAspectFit
+    }
+    
+    private func setupCloudImageView() {
+        cloudImageView.translatesAutoresizingMaskIntoConstraints = false
+        cloudImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
+        cloudImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: -250).isActive = true
+        cloudImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -400).isActive = true
+        cloudImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -450).isActive = true
+        cloudImageView.contentMode = .scaleAspectFit
+    }
+    
+    private func setupStarImageView() {
+        starImageView.translatesAutoresizingMaskIntoConstraints = false
+        starImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        starImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 145).isActive = true
+        starImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -5).isActive = true
+        starImageView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -540).isActive = true
+        starImageView.contentMode = .scaleAspectFit
+    }
+    
+    private func setupButtonsStackView() {
+        buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 500).isActive = true
+        buttonsStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        buttonsStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        buttonsStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
+        
+        buttonsStackView.addArrangedSubview(shakeButton)
+        buttonsStackView.addArrangedSubview(flipButton)
+        buttonsStackView.addArrangedSubview(pushButton)
+        
+        shakeButton.addTarget(self, action: #selector(tapShakeButton), for: .touchUpInside)
+        flipButton.addTarget(self, action: #selector(tapFlipButton), for: .touchUpInside)
+        pushButton.addTarget(self, action: #selector(tapPushButton), for: .touchUpInside)
+        buttonsStackView.contentMode = .scaleAspectFit
+    }
+    
+    private func switchDayNightSetup() {
+        
+        switchDayNight.translatesAutoresizingMaskIntoConstraints = false
+        switchDayNight.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 405).isActive = true
+        switchDayNight.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        switchDayNight.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -290).isActive = true
+        switchDayNight.bottomAnchor.constraint(equalTo: buttonsStackView.safeAreaLayoutGuide.topAnchor, constant: -10).isActive = true
+        
+        let tapGestureDayNight = UITapGestureRecognizer(target: self, action: #selector(switchDayNightTapped))
+        switchDayNight.addGestureRecognizer(tapGestureDayNight)
+        
+        switchDayNight.contentMode = .scaleAspectFit
+    }
 }
+
