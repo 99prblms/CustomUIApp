@@ -46,7 +46,6 @@ class CustomView: UIView {
         switchDayNight.backgroundColor = .systemFill
         switchDayNight.layer.cornerRadius = 25
         switchDayNight.isUserInteractionEnabled = true
-        
         return switchDayNight
     }()
     
@@ -107,6 +106,7 @@ class CustomView: UIView {
     }
     
     @objc func switchDayNightTapped() {
+        
         if flagOnOff {
             switchDayNight.play()
             // Появление солнца
@@ -130,6 +130,7 @@ class CustomView: UIView {
             feedbackGenerator.impactOccurred()
             
         } else {
+            
             switchDayNight.play(fromProgress: 1, toProgress: 0, loopMode: .none, completion: nil)
             // Появление луны
             let animation = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
@@ -138,6 +139,7 @@ class CustomView: UIView {
                 self.moonImageView.frame.origin = CGPoint(x: 26, y: 65.5)
                 self.sunImageView.frame.origin = CGPoint(x: 35, y: -300)
             }
+            
             animation.startAnimation()
             
             let color = UIColor.night
@@ -147,10 +149,12 @@ class CustomView: UIView {
                 options: .showHideTransitionViews) {
                     self.backgroundColor = color
                 }
+            
             let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
             feedbackGenerator.prepare()
             feedbackGenerator.impactOccurred()
         }
+        
         flagOnOff.toggle()
     }
     
@@ -214,7 +218,6 @@ class CustomView: UIView {
     }
     
     private func switchDayNightSetup() {
-        
         switchDayNight.translatesAutoresizingMaskIntoConstraints = false
         switchDayNight.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 405).isActive = true
         switchDayNight.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
