@@ -10,6 +10,8 @@ import AudioToolbox
 
 class CustomButton: UIButton {
     
+    // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupButton()
@@ -19,17 +21,7 @@ class CustomButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Methods
-    
-    func setupButton() {
-        setTitleColor(.black, for: .normal)
-        backgroundColor = .systemGreen
-        titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 18)
-        layer.cornerRadius = 15
-        layer.borderWidth = 5.0
-        layer.borderColor = UIColor.black.cgColor
-    }
-    
+    // MARK: - Public Methods
     // Тряска кнопки + вибрация
     func shakeButton() {
         let shake = CABasicAnimation(keyPath: "position")
@@ -70,4 +62,16 @@ class CustomButton: UIButton {
         feedbackGenerator.prepare()
         feedbackGenerator.impactOccurred()
     }
+    
+    // MARK: - Private Methods
+    
+    private func setupButton() {
+        setTitleColor(.black, for: .normal)
+        backgroundColor = .systemGreen
+        titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 18)
+        layer.cornerRadius = 15
+        layer.borderWidth = 5.0
+        layer.borderColor = UIColor.black.cgColor
+    }
+    
 }

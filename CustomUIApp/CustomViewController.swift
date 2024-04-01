@@ -11,6 +11,8 @@ class CustomViewController: UIViewController {
 
     var mainView = CustomView()
     
+    // MARK: - CustomViewController Life Cycles
+    
     override func loadView() {
         view = mainView
     }

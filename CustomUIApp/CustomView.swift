@@ -10,7 +10,7 @@ import Lottie
 
 class CustomView: UIView {
     
-    var flagOnOff = true
+    private var flagOnOff = true
     
     private var shakeButton: CustomButton = {
         let shake = CustomButton()
@@ -88,10 +88,6 @@ class CustomView: UIView {
         switchDayNightSetup()
     }
     
-    func addSubviews() {
-        [buttonsStackView, moonImageView, sunImageView, cloudImageView, starImageView, switchDayNight].forEach { addSubview($0) }
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -159,6 +155,10 @@ class CustomView: UIView {
     }
     
     // MARK: - Private Methods
+    
+    private func addSubviews() {
+        [buttonsStackView, moonImageView, sunImageView, cloudImageView, starImageView, switchDayNight].forEach { addSubview($0) }
+    }
     
     private func setupMoonImageView() {
         moonImageView.translatesAutoresizingMaskIntoConstraints = false
